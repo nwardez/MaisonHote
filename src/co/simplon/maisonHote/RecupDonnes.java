@@ -58,6 +58,7 @@ public class RecupDonnes extends HttpServlet {
 				Boolean animal = request.getParameter("animal") != null;
 				Boolean parking = request.getParameter("parking") != null;
 				String dateArrivee = request.getParameter("arrive");
+				String dateDepart = request.getParameter("depart");
 				
 				
 				
@@ -91,6 +92,7 @@ public class RecupDonnes extends HttpServlet {
 					maResa.setParking(parking);
 					maResa.setAnimal(animal);
 					maResa.setDateArrivee(dateArrivee);
+					maResa.setDateDepart(dateDepart);
 					
 					
 					
@@ -107,7 +109,7 @@ public class RecupDonnes extends HttpServlet {
 					
 					if(enregistrementOk)
 					{
-						// L'ajout du ticket s'est bien passé => Affichage de la page de récapitulation
+						// L'ajout de la réservation s'est bien passée => Affichage de la page de récapitulation
 						request.setAttribute("reservation", maResa);
 						getServletContext().getRequestDispatcher("/confirmResa.jsp").forward(request, response);
 					}	

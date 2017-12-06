@@ -19,6 +19,26 @@ public class Reservation {
 	private String telephone;
 	private String mail;
 	
+	public int calculTarifSejour() {
+		int result;
+		int animal = 0;
+		int parking = 0;
+		int personnes = this.getNombrePersonnes();
+		int nombresDeNuits = 5; // A calculer en fonction des dates
+		int tarifNuitPersonnes = 150;
+		
+		if(this.getAnimal()) {
+			animal=35;
+		}
+		if(this.getParking()) {
+			parking=50;
+		}
+		
+		result = nombresDeNuits*((personnes*tarifNuitPersonnes) + animal + parking);
+		
+		return result;
+	}
+	
 	
 	
 	public String getNom() {

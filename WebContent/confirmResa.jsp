@@ -4,15 +4,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
  <link rel="stylesheet" href="main.css">
 <title>Confirmation Réservation</title>
 </head>
 <body>
 
 <% Reservation reservation = (Reservation) request.getAttribute("reservation"); %>
-		<h1 id='titre'>Merci de votre confiance !</h1>
-		<p>Votre réservation a été enregistré : Référence: <%=reservation.getDateEnregistrement()%> avec les informations suivantes :</p>
+		<h1 id='titre'>Merci pour votre confiance !</h1>
+		<p>Votre réservation a été enregistrée : Référence: <%=reservation.getDateEnregistrement()%> avec les informations suivantes :</p>
 		<table class="resultTable">
 			<tr>
 				<td>Identifiant réservation</td>
@@ -69,6 +69,8 @@
 			
 			
 		</table>
+		
+		<h4>Le montant de votre séjour est de:<%=reservation.calculTarifSejour()%> Euros</h4>
 		<!-- <a href="index.html" >Retour</a> -->
 
 </body>
