@@ -1,0 +1,27 @@
+
+h1{color: #c30044;}
+
+.error{font-size:24px;font-weight:700;color:red}
+
+.form{max-width:400px;margin:30px auto;}
+.formLine{height:30px;}
+
+.label{width:50%;float:left;text-align:right;}
+.label > label{padding-right:20px;font-weight:700;}
+
+.input{width:50%;float:left;}
+.input > input{width:100%;}
+
+.submitButton{background-color:#c30044;color:white;height:40px;width:200px;border:none;font-weight:700;margin-top:10px;}
+
+.resultTable{margin:30px auto;}
+.resultTable > tbody > tr > td {width:150px;}
+.resultTable > tbody > tr > td:first-child{font-weight:700;}
+
+.ticketTable{margin:30px auto;}
+.ticketTable > tbody > tr > td {width:100px;}
+.ticketTable > tbody > tr > td:nth-child(4){width:200px;}
+
+#titre {
+	background-color:green;
+}

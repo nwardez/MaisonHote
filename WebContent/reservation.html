@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!--Import Google Icon Font-->
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link rel="stylesheet" href="materialize.css">
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="calendrier.css">
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+
+</head>
+
+<body>
+  <div class="retrait">
+    <header>
+      <div>
+        <img class="banniere" src="banniere.jpg" alt="Saint St-Emilion" />
+      </div>
+    </header>
+
+
+
+
+    <div class="topnav">
+      <a class="active" href="index.html">Accueil</a>
+      <a href="environnement.html">Photos</a>
+      <a href="region.html">Visites</a>
+      <a href="reservation.html">Réserver</a>
+      <a href="plan.html">Nous trouver</a>
+    </div>
+
+    <div class="container">
+      <form class="col s12"  action="RecupDonnes" method="post">
+        <div class="row">
+          <div id='titre_resa'>
+            <h2>Réservez votre prochain séjour en ligne</h2>
+            <p>Les champs marqués d'un astérisque* sont obligatoires</p>
+          </div>
+
+
+
+          <div class="input-field col s6">
+            <i class="material-icons prefix">account_circle</i>
+            <input name="name" type="text" class="validate" required>
+            <label for="name">Nom *</label>
+          </div>
+          <div class="input-field col s6">
+            <i class="material-icons prefix">account_circle</i>
+            <input name="subname" type="tel" class="validate" required>
+            <label for="subname">Prénom *</label>
+          </div>
+
+
+
+
+
+          <div class="input-field col s6">
+            <i class="material-icons prefix">contact_mail</i>
+            <input name="contact_mail" type="text" class="validate">
+            <label for="contact_mail">Adresse mail</label>
+          </div>
+          <div class="input-field col s6">
+            <i class="material-icons prefix">phone</i>
+            <input name="telephone" type="tel" class="validate">
+            <label for="telephone">Telephone</label>
+          </div>
+
+
+
+
+
+          <div class="input-field col s6">
+            <i class="material-icons prefix">people</i>
+            <select name="personnes">
+              <option value="" disabled selected>Nombres de personnes</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+          <div class="input-field col s6">
+            <i class="material-icons prefix">vpn_lock</i>
+            <select name="region">
+              <option value="" disabled selected>Votre région d'origine</option>
+              <option value="Alsace">Alsace</option>
+              <option value="Aquitaine">Aquitaine</option>
+              <option value="Auvergne">Auvergne</option>
+              <option value="Basse Normandie">Basse Normandie</option>
+              <option value="Bourgogne">Bourgogne</option>
+              <option value="Bretagne">Bretagne</option>
+              <option value="Centre">Centre</option>
+              <option value="Champagne Ardenne">Champagne Ardenne</option>
+              <option value="Corse">Corse</option>
+              <option value="Haute Normandie">Haute Normandie</option>
+              <option value="Ile De France">Ile De France</option>
+              <option value="Languedoc Roussillon">Languedoc Roussillon</option>
+            </select>
+          </div>
+
+
+
+          <div class="input-field col s6">
+            <p>Date d'arrivée souhaitée *</p>
+            <i class="material-icons prefix">perm_contact_calendar</i>
+            <input name='arrive' type="text" class="datepicker" required>
+          </div>
+
+          <div class="input-field col s6">
+            <p>Date de départ souhaitée *</p>
+            <i class="material-icons prefix">perm_contact_calendar</i>
+            <input id='depart' type="text" class="datepicker" required>
+          </div>
+
+
+
+          <p>Type de séjour</p>
+          <p>
+            <input name="group1" type="radio" id="test1" />
+            <label for="test1">Séjour loisir</label>
+          </p>
+          <p>
+            <input name="group1" type="radio" id="test2" />
+            <label for="test2">Séjour professionnel</label>
+          </p>
+
+
+
+
+
+          <p>Préférences (dans la mesure de nos possibilités)</p>
+          <p>
+            <input name="parking" type="checkbox" id="park" />
+            <label for="park">Parking (50.00 € par jour)</label>
+          </p>
+          <p>
+            <input name="animal" type="checkbox" id="ani" />
+            <label for="ani">Animal (35.00 € par jour)</label>
+          </p>
+          <p>
+            <input name="fumeur" type="checkbox" id="fum" />
+            <label for="fum">Fumeur</label>
+          </p>
+
+
+
+          <a id='valid' class="btn waves-effect waves-light">
+            <i class="material-icons right">euro_symbol</i>Estimer le coût</a>
+
+
+          </button>
+          <button class="btn waves-effect waves-light" type="submit" name="action">Réserver
+            <i class="material-icons right">send</i>
+          </button>
+
+        </div>
+
+      </form>
+    </div>
+
+    <div id="resultat">test</div>
+
+
+
+
+
+
+
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <div>
+              <p id="copyright">Retrouvez-nous sur les réseaux sociaux</p>
+              <a class="mt-facebook mt-share-inline-circle-sm" href="https://www.facebook.com/sharer/sharer.php?u=">
+                <img src="http://mojotech-static.s3.amazonaws.com/facebook@2x.png">
+              </a>
+              <a class="mt-twitter mt-share-inline-circle-sm" href="http://twitter.com/intent/tweet?text=&amp;url=">
+                <img src="http://mojotech-static.s3.amazonaws.com/twitter@2x.png">
+              </a>
+              <a class="mt-linkedin mt-share-inline-circle-sm" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=&amp;summary=">
+                <img src="http://mojotech-static.s3.amazonaws.com/linkedin@2x.png">
+              </a>
+              <a class="mt-google mt-share-inline-circle-sm" href="https://plus.google.com/share?url=">
+                <img src="http://mojotech-static.s3.amazonaws.com/google@2x.png">
+              </a>
+              <a class="mt-pinterest mt-share-inline-circle-sm" href="http://www.pinterest.com/pin/create/button/?url=&amp;media=&amp;guid=1234&amp;description=">
+                <img src="http://mojotech-static.s3.amazonaws.com/pinterest@2x.png">
+              </a>
+            </div>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Liens utiles</h5>
+            <ul>
+              <li>
+                <a class="grey-text text-lighten-3" href="http://www.saint-emilion-tourisme.com/" target=_blank>Syndicat d'initiative de St-Emilion</a>
+              </li>
+              <li>
+                <a class="grey-text text-lighten-3" href="https://www.bordeaux-tourisme.com/" target=_blank>Syndicat d'initiative de Bordeaux</a>
+              </li>
+              <li>
+                <a class="grey-text text-lighten-3" href="http://www.girondins.com/fr" target=_blank>Les Girondins de Bordeaux</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+  </div>
+
+  <!--Import jQuery before materialize.js-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script type="text/javascript" src="materialize.js"></script>
+  <script src="materialize.js"></script>
+  <script src="monsite.js"></script>
+
+  <script>
+    //je recupere l'ID de mon bouton submit du formulaire et je lui ajoute un "ecouteur" click avec appel de la fonction "affiche"
+    var element = document.getElementById('valid');
+    element.addEventListener('click', affiche);
+
+    function affiche() {
+
+      var montantDevis = 0;
+      var montantPersonnes = 0;
+      var montantParking = 0;
+      var montantAnimal = 0;
+      var nombreDeNuits = 0;
+      var Date1 = new Date(document.getElementById('arrive').value); // VALEUR des dates saisies dans le calendrier
+      var Date2 = new Date(document.getElementById('depart').value);
+      nombreDeNuits = Math.abs(Math.ceil((Date2.getTime() - Date1.getTime()) / (1000 * 60 * 60 * 24))); // calcul du nombre de nuits
+
+      var O_Select = document.getElementById('personnes'); // JE RECUPERE LE NOMBRES de personnes
+      var index = O_Select.selectedIndex;
+
+      montantPersonnes = O_Select.options[index].value * 85; // 85€ par personnnes
+
+
+      if (document.getElementById('park').checked) { // VALEUR des checkBox : true ou false
+        montantParking = 50;
+      }
+      if (document.getElementById('ani').checked) {
+        montantAnimal = 35;
+      }
+      montantDevis = nombreDeNuits * (montantPersonnes + montantParking + montantAnimal); // MONTANT du devis
+      var divDevis = document.getElementById('resultat'); // REcupère le DIV ou je vais afficher le résultat
+      divDevis.innerHTML = montantDevis; //affichage du résultat
+    }
+  </script>
+
+
+
+  <script>
+    $(document).ready(function () {
+      $('select').material_select();
+    });
+
+    $('.datepicker').pickadate({
+      selectMonths: true, // Creates a dropdown to control month
+      selectYears: 15, // Creates a dropdown of 15 years to control year,
+      today: 'Aujourdhui',
+      clear: 'Annuler',
+      close: 'Ok',
+      closeOnSelect: false // Close upon selecting a date,
+    });
+  </script>
+</body>
+
+</html>
