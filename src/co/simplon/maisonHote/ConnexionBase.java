@@ -23,13 +23,13 @@ public class ConnexionBase {
 	}
 	
 	
-	public void sauvegarderReservation(String nom, String prenom, String dateArrivee,String regionOrigine, String typeSejour, String telephone, String mail, int nombrePersonnes, int nuitee) throws SQLException
+	public void sauvegarderReservation(String nom, String prenom, String dateArrivee,String regionOrigine, String typeSejour, String telephone, String mail, int nombrePersonnes, int nuitee, boolean fumeur, boolean animal, boolean parking) throws SQLException
 	{
 		Statement statement = null;
 
 		try {
 			statement = connection.createStatement();
-			String sql = "INSERT INTO `tabResa` (`nom`, `prenom`, `dateArrivee`,`regionOrigine`,`typeSejour`,`telephone`,`mail`,`nombrePersonnes`,`nuitee`) VALUES ('" + nom + "', '" + prenom + "', '" + dateArrivee + "','" + regionOrigine + "','" + typeSejour + "','" + telephone + "','" + mail + "'," + nombrePersonnes + "," + nuitee + ")";
+			String sql = "INSERT INTO `tabResa` (`nom`, `prenom`, `dateArrivee`,`regionOrigine`,`typeSejour`,`telephone`,`mail`,`nombrePersonnes`,`nuitee`,`fumeur`,`animal`,`parking`) VALUES ('" + nom + "', '" + prenom + "', '" + dateArrivee + "','" + regionOrigine + "','" + typeSejour + "','" + telephone + "','" + mail + "'," + nombrePersonnes + "," + nuitee + "," + fumeur + ", " + animal + ", " + parking + ")";
 			statement.executeUpdate(sql);
 		}
 		catch(SQLException e){

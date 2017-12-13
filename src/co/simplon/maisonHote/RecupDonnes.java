@@ -121,7 +121,7 @@ public class RecupDonnes extends HttpServlet {
 							e1.printStackTrace();
 						}
 						try {
-							monConnect.sauvegarderReservation(nom, prenom,dateArrivee,region,typeSejour,telephone,mail,nombrePersonnes,nombreDeNuits);
+							monConnect.sauvegarderReservation(nom, prenom,dateArrivee,region,typeSejour,telephone,mail,nombrePersonnes,nombreDeNuits,fumeur,animal,parking);
 						} catch (SQLException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
