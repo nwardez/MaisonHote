@@ -131,16 +131,22 @@ public class RecupDonnes extends HttpServlet {
 						}
 						
 						
-						try {
+						/*try {
 							monConnect.voirLesReservations();
 						} catch (SQLException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
-						}
+						}*/
 						// L'ajout de la réservation s'est bien passée => Affichage de la page de récapitulation
 						request.setAttribute("reservation", maResa);
 						//getServletContext().getRequestDispatcher("/confirmResa.jsp").forward(request, response);
 						request.setAttribute("reservation", gestionReservation.getInstance().getList());
+						try {
+							request.setAttribute("reservation", monConnect.voirLesReservations());
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						getServletContext().getRequestDispatcher("/listeReservation.jsp").forward(request, response);
 						
 						

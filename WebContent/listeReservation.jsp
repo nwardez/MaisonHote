@@ -36,12 +36,13 @@
 			
 		</tr>
 		<%
-			SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+			//SimpleDateFormat dateFormater = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 			Collection<Reservation> listeReservations = (Collection<Reservation>) request.getAttribute("reservation");
 			if(listeReservations != null){
 				Iterator it = listeReservations.iterator() ;
 			    while (it.hasNext()){
 			    	Reservation serveur=(Reservation) it.next() ;
+			    	
 		%>
 					<tr>
 						<td><%=serveur.getNumeroResa()%></td>
@@ -50,13 +51,13 @@
 						<td><%=serveur.getDateArrivee()%></td>
 						<td><%=serveur.getNuits()%></td>
 						<td><%=serveur.getNombrePersonnes()%></td>
-						<td><%=serveur.fumeur()%></td>
-						<td><%=serveur.animal()%></td>
-						<td><%=serveur.parking()%></td>
+						<td><%=serveur.getFumeur()%></td>
+						<td><%=serveur.getAnimal()%></td>
+						<td><%=serveur.getParking()%></td>
 						<td><%=serveur.getTypeSejour()%></td>
 						<td><%=serveur.getTelephone()%></td>
 						<td><%=serveur.getMail()%></td>
-						<td><%=serveur.calculTarifSejour()%></td>
+						<%--<td><%=serveur.calculTarifSejour()%></td> --%>
 						<td><a href="http://ton lien"><img src="oeil.png" alt="Voir le détail de la réservation"></a></td>
 					</tr>
 		<%      }

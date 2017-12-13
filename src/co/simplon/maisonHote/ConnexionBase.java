@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class ConnexionBase {
 	
@@ -61,8 +62,10 @@ public class ConnexionBase {
 		System.out.println();
 	}
 	
-	public void voirLesReservations() throws SQLException
+	public ArrayList<Reservation> voirLesReservations() throws SQLException
 	{
+		ArrayList<Reservation> mesResas = new ArrayList<>();
+		
 		Statement statement = null;
 		ResultSet rs = null;
 
@@ -73,6 +76,25 @@ public class ConnexionBase {
 			
 			// Initialisation de la chaine de caractère de la requête
 			rs = statement.executeQuery(sql);
+			while (rs.next()) {
+				Reservation maResa = new Reservation();
+				maResa.setNom(rs.getString("nom"));
+				maResa.setPrenom(rs.getString("prenom"));
+				maResa.setDateArrivee(rs.getString("dateArrivee"));
+				maResa.setTypeSejour(rs.getString("typeSejour"));
+				maResa.setTelephone(rs.getString("telephone"));
+				maResa.setMail(rs.getString("mail"));
+				maResa.setNombrePersonnes(rs.getInt("nombrePersonnes"));
+				maResa.setNuits(rs.getInt("nuitee"));
+				maResa.setFumeur(rs.getBoolean("fumeur"));
+				maResa.setAnimal(rs.getBoolean("animal"));
+				maResa.setParking(rs.getBoolean("parking"));
+				
+				mesResas.add(maResa);
+				//System.out.println("  - " + rs.getString("idtabResa") + " : " + rs.getString("prenom") + " " +  rs.getString("nom")+ " " +  rs.getString("dateArrivee")+ " " +  rs.getString("typeSejour")+ " " +  rs.getString("telephone")+ " " +  rs.getString("mail")+ " " +  rs.getString("nombrePersonnes")+ " " +  rs.getString("nuitee")+ " " +  rs.getString("fumeur")+ " " +  rs.getString("animal")+ " " +  rs.getString("parking"));
+			}
+			
+			
 		
 			// Loop on the results extracted from the database
 			System.out.println("Liste des réservations");
@@ -88,6 +110,7 @@ public class ConnexionBase {
 		}
 		
 		System.out.println();
+		return mesResas;
 	}
 
 }
