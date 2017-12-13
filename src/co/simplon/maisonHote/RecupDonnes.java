@@ -129,6 +129,14 @@ public class RecupDonnes extends HttpServlet {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
+						
+						
+						try {
+							monConnect.voirLesReservations();
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						// L'ajout de la réservation s'est bien passée => Affichage de la page de récapitulation
 						request.setAttribute("reservation", maResa);
 						//getServletContext().getRequestDispatcher("/confirmResa.jsp").forward(request, response);

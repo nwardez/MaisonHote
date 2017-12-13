@@ -61,23 +61,23 @@ public class ConnexionBase {
 		System.out.println();
 	}
 	
-	public static void voirLesReservations() throws SQLException
+	public void voirLesReservations() throws SQLException
 	{
 		Statement statement = null;
 		ResultSet rs = null;
 
 		try {
-			// Create the statement
+			// Déclaration de l'Interface permettant l'execution de requêtes
 			statement = connection.createStatement();
-			String sql = "SELECT * FROM reservationTab";
+			String sql = "SELECT * FROM tabresa";
 			
-			// Execute the query
+			// Initialisation de la chaine de caractère de la requête
 			rs = statement.executeQuery(sql);
 		
 			// Loop on the results extracted from the database
 			System.out.println("Liste des réservations");
 			while (rs.next()) {
-				System.out.println("  - " + rs.getString("idReservation") + " : " + rs.getString("prenom") + " " +  rs.getString("nom"));
+				System.out.println("  - " + rs.getString("idtabResa") + " : " + rs.getString("prenom") + " " +  rs.getString("nom")+ " " +  rs.getString("dateArrivee")+ " " +  rs.getString("typeSejour")+ " " +  rs.getString("telephone")+ " " +  rs.getString("mail")+ " " +  rs.getString("nombrePersonnes")+ " " +  rs.getString("nuitee")+ " " +  rs.getString("fumeur")+ " " +  rs.getString("animal")+ " " +  rs.getString("parking"));
 			}
 		}
 		catch(SQLException e){
