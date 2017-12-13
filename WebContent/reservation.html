@@ -37,7 +37,7 @@
     </div>
 
     <div class="container">
-      <form class="col s12"  action="RecupDonnes" method="post">
+      <form class="col s12" action="RecupDonnes" method="post">
         <div class="row">
           <div id='titre_resa'>
             <h2>Réservez votre prochain séjour en ligne</h2>
@@ -48,12 +48,12 @@
 
           <div class="input-field col s6">
             <i class="material-icons prefix">account_circle</i>
-            <input name="name" type="text" class="validate" required>
+            <input name="name" id="name" type="text" class="validate" required>
             <label for="name">Nom *</label>
           </div>
           <div class="input-field col s6">
             <i class="material-icons prefix">account_circle</i>
-            <input name="subname" type="tel" class="validate" required>
+            <input name="subname" id="subname" type="tel" class="validate" required>
             <label for="subname">Prénom *</label>
           </div>
 
@@ -63,12 +63,12 @@
 
           <div class="input-field col s6">
             <i class="material-icons prefix">contact_mail</i>
-            <input name="contact_mail" type="text" class="validate">
+            <input name="contact_mail" id="contact_mail" type="text" class="validate">
             <label for="contact_mail">Adresse mail</label>
           </div>
           <div class="input-field col s6">
             <i class="material-icons prefix">phone</i>
-            <input name="telephone" type="tel" class="validate">
+            <input name="telephone" id="telephone" type="tel" class="validate">
             <label for="telephone">Telephone</label>
           </div>
 
@@ -78,8 +78,8 @@
 
           <div class="input-field col s6">
             <i class="material-icons prefix">people</i>
-            <select name="personnes">
-              <option value="" disabled selected>Nombres de personnes</option>
+            <select name="personnes" id="personnes">
+              <option value="" disabled selected>Nombres de personnes *</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -96,44 +96,66 @@
             <i class="material-icons prefix">vpn_lock</i>
             <select name="region">
               <option value="" disabled selected>Votre région d'origine</option>
-              <option value="Alsace">Alsace</option>
-              <option value="Aquitaine">Aquitaine</option>
-              <option value="Auvergne">Auvergne</option>
-              <option value="Basse Normandie">Basse Normandie</option>
-              <option value="Bourgogne">Bourgogne</option>
-              <option value="Bretagne">Bretagne</option>
-              <option value="Centre">Centre</option>
-              <option value="Champagne Ardenne">Champagne Ardenne</option>
-              <option value="Corse">Corse</option>
-              <option value="Haute Normandie">Haute Normandie</option>
-              <option value="Ile De France">Ile De France</option>
-              <option value="Languedoc Roussillon">Languedoc Roussillon</option>
+              <option value="1">Alsace</option>
+              <option value="2">Aquitaine</option>
+              <option value="3">Auvergne</option>
+              <option value="4">Basse Normandie</option>
+              <option value="5">Bourgogne</option>
+              <option value="6">Bretagne</option>
+              <option value="7">Centre</option>
+              <option value="8">Champagne Ardenne</option>
+              <option value="9">Corse</option>
+              <option value="10">Haute Normandie</option>
+              <option value="11">Ile De France</option>
+              <option value="12">Languedoc Roussillon</option>
+            </select>
+          </div>
+          
+           <div class="input-field col s6">
+            <i class="material-icons prefix">account_circle</i>
+            <input name="arrive" id="name" type="text" class="validate" required>
+            <label for="name">Date d'arrivée (jj/mm/aaaa) *</label>
+          </div>
+          <div class="input-field col s6">
+            <i class="material-icons prefix">people</i>
+            <select name="nombreDeNuits" id="nbnuits">
+              <option value="" disabled selected>Nombres de nuits *</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
             </select>
           </div>
 
 
 
-          <div class="input-field col s6">
+          <!-- <div class="input-field col s6">
             <p>Date d'arrivée souhaitée *</p>
             <i class="material-icons prefix">perm_contact_calendar</i>
-            <input name='arrive' type="text" class="datepicker" required>
+            <input name="arrive" id='arrive' type="text" data-date-format='dd-mm-yy' class="datepicker">
           </div>
 
           <div class="input-field col s6">
             <p>Date de départ souhaitée *</p>
             <i class="material-icons prefix">perm_contact_calendar</i>
-            <input name='depart' type="text" class="datepicker" required>
-          </div>
+            <input name="depart" id='depart' type="text" data-date-format='dd-mm-yy' class="datepicker" >
+          </div> -->
 
 
 
           <p>Type de séjour</p>
           <p>
-            <input name="group1" type="radio" id="test1" />
+            <input name="group1" type="radio" id="test1" value="loisir" checked/>
             <label for="test1">Séjour loisir</label>
           </p>
           <p>
-            <input name="group1" type="radio" id="test2" />
+            <input name="group1" type="radio" id="test2" value="pro"/>
             <label for="test2">Séjour professionnel</label>
           </p>
 
@@ -186,19 +208,19 @@
             <div>
               <p id="copyright">Retrouvez-nous sur les réseaux sociaux</p>
               <a class="mt-facebook mt-share-inline-circle-sm" href="https://www.facebook.com/sharer/sharer.php?u=">
-                <img src="http://mojotech-static.s3.amazonaws.com/facebook@2x.png" alt="Saint St-Emilion">
+                <img src="http://mojotech-static.s3.amazonaws.com/facebook@2x.png">
               </a>
               <a class="mt-twitter mt-share-inline-circle-sm" href="http://twitter.com/intent/tweet?text=&amp;url=">
-                <img src="http://mojotech-static.s3.amazonaws.com/twitter@2x.png" alt="Saint St-Emilion">
+                <img src="http://mojotech-static.s3.amazonaws.com/twitter@2x.png">
               </a>
               <a class="mt-linkedin mt-share-inline-circle-sm" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=&amp;summary=">
-                <img src="http://mojotech-static.s3.amazonaws.com/linkedin@2x.png" alt="Saint St-Emilion">
+                <img src="http://mojotech-static.s3.amazonaws.com/linkedin@2x.png">
               </a>
               <a class="mt-google mt-share-inline-circle-sm" href="https://plus.google.com/share?url=">
-                <img src="http://mojotech-static.s3.amazonaws.com/google@2x.png" alt="Saint St-Emilion">
+                <img src="http://mojotech-static.s3.amazonaws.com/google@2x.png">
               </a>
               <a class="mt-pinterest mt-share-inline-circle-sm" href="http://www.pinterest.com/pin/create/button/?url=&amp;media=&amp;guid=1234&amp;description=">
-                <img src="http://mojotech-static.s3.amazonaws.com/pinterest@2x.png" alt="Saint St-Emilion">
+                <img src="http://mojotech-static.s3.amazonaws.com/pinterest@2x.png">
               </a>
             </div>
           </div>

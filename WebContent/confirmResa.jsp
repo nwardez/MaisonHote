@@ -1,21 +1,26 @@
 <%@page import="co.simplon.maisonHote.Reservation"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
  <link rel="stylesheet" href="main.css">
-<title>Confirmation RÈservation</title>
+<title>Confirmation R√©servation</title>
 </head>
 <body>
 
 <% Reservation reservation = (Reservation) request.getAttribute("reservation"); %>
 		<h1 id='titre'>Merci pour votre confiance !</h1>
-		<p>Votre rÈservation a ÈtÈ enregistrÈe : RÈfÈrence: <%=reservation.getDateEnregistrement()%> avec les informations suivantes :</p>
+		<p>Votre r√©servation a √©t√© enregistr√©e : R√©f√©rence: <%=reservation.getNumeroResa()%> avec les informations suivantes :</p>
 		<table class="resultTable">
 			<tr>
-				<td>Identifiant rÈservation</td>
+    			<th>Libell√©</th>
+    			<th>Information personnelle</th>
+  			</tr>
+			
+			<tr>
+				<td>R√©f√©rence r√©servation</td>
 				<td><%=reservation.getNumeroResa()%></td>
 			</tr>
 			<tr>
@@ -23,7 +28,7 @@
 				<td><%=reservation.getNom()%></td>
 			</tr>
 			<tr>
-				<td>PrÈnom</td>
+				<td>Pr√©nom</td>
 				<td><%=reservation.getPrenom()%></td>
 			</tr>
 			<tr>
@@ -35,23 +40,24 @@
 				<td><%=reservation.getTelephone()%></td>
 			</tr>
 			<tr>
-				<td>Date arrivÈe</td>
+				<td>Date arriv√©e</td>
 				<td><%=reservation.getDateArrivee()%></td>
 			</tr>
 			<tr>
-				<td>Date dÈpart</td>
-				<td><%=reservation.getDateDepart()%></td>
+				<td>Nombres de nuits</td>
+				<td><%=reservation.getNuits()%></td>
 			</tr>
+			
 			<tr>
 				<td>Nombres de personnes</td>
 				<td><%=reservation.getNombrePersonnes()%></td>
 			</tr>
 			<tr>
-				<td>Votre rÈgion d'origine</td>
+				<td>Votre r√©gion d'origine</td>
 				<td><%=reservation.getRegionOrigine()%></td>
 			</tr>
 			<tr>
-				<td>Type de sÈjour</td>
+				<td>Type de s√©jour</td>
 				<td><%=reservation.getTypeSejour()%></td>
 			</tr>
 			<tr>
@@ -70,8 +76,9 @@
 			
 		</table>
 		
-		<h4>Le montant de votre sÈjour est de:<%=reservation.calculTarifSejour()%> Euros</h4>
+		<h4>Le montant de votre s√©jour est de : <%=reservation.calculTarifSejour()%> Euros</h4>
 		<!-- <a href="index.html" >Retour</a> -->
+		
 
 </body>
 </html>

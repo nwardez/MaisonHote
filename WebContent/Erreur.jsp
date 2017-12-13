@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,10 +8,10 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 	<body>
-		<h1>Une erreur a été détectée</h1>
-		<p>L'erreur ci-dessous s'est produite durant l'enregistrement de votre réservation :</p>
+		<h1>Une erreur a Ã©tÃ© dÃ©tectÃ©e</h1>
+		<p>L'erreur ci-dessous s'est produite durant l'enregistrement de votre rÃ©servation :</p>
 		<p class="error"><%=request.getAttribute("message") %></p>
-		<p>Merci de vérifier les informations qui ont été saisie.</p>
+		<p>Merci de vÃ©rifier les informations qui ont Ã©tÃ© saisie.</p>
 		
 		<%@include file="/reservation.html" %>
 	</body>

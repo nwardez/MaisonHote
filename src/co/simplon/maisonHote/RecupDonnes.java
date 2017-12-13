@@ -1,16 +1,15 @@
 package co.simplon.maisonHote;
 
 import java.io.IOException;
-import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
 
 import co.simplon.maisonHote.Reservation;
 
@@ -37,9 +36,9 @@ public class RecupDonnes extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Récupération des tickets actifs
-				request.setAttribute("reservation", gestionReservation.getInstance().getReservation().values());
+				request.setAttribute("reservation", gestionReservation.getInstance().getList());
 				
-				getServletContext().getRequestDispatcher("/confirmResa.jsp").forward(request, response); 
+				getServletContext().getRequestDispatcher("/listeReservation.jsp").forward(request, response); 
 				
 	}
 
@@ -48,6 +47,7 @@ public class RecupDonnes extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Récupération des informations saisies par l'utilisateur
+				String numeroResa="1";
 				String nom = request.getParameter("name");
 				String prenom = request.getParameter("subname");
 				String telephone = request.getParameter("telephone");
@@ -58,9 +58,8 @@ public class RecupDonnes extends HttpServlet {
 				Boolean animal = request.getParameter("animal") != null;
 				Boolean parking = request.getParameter("parking") != null;
 				String dateArrivee = request.getParameter("arrive");
-				String dateDepart = request.getParameter("depart");
-				
-				
+				int nombreDeNuits = Integer.parseInt(request.getParameter("nombreDeNuits"));
+				String typeSejour=request.getParameter("group1");
 				
 				// Vérification des informations saisies
 				if((nom == null) || (nom.isEmpty()))
@@ -69,19 +68,20 @@ public class RecupDonnes extends HttpServlet {
 					request.setAttribute("message", message);
 					getServletContext().getRequestDispatcher("/Erreur.jsp").forward(request, response); // REDISPATCH vers erreurJSP avec bon message
 				}
-				/*else if((prenom == null) || (prenom.isEmpty()))
+				else if((prenom == null) || (prenom.isEmpty()))
 				{
 					String message = "Le prenom  n'est pas renseigné !";
 					request.setAttribute("message", message);
 					getServletContext().getRequestDispatcher("/Erreur.jsp").forward(request, response);
-				}*/
+				}
 				
 				else
 				{
 					boolean enregistrementOk = true;
 					
-					// Tout est en règle => Création du nouveau ticket
+					// Tout est en règle => Création NOUVELLE réservation
 					Reservation maResa = new Reservation();
+					maResa.setNumeroResa(numeroResa);
 					maResa.setNom(nom);
 					maResa.setPrenom(prenom);
 					maResa.setTelephone(telephone);
@@ -91,12 +91,16 @@ public class RecupDonnes extends HttpServlet {
 					maResa.setFumeur(fumeur);
 					maResa.setParking(parking);
 					maResa.setAnimal(animal);
+					maResa.setTypeSejour(typeSejour);
 					maResa.setDateArrivee(dateArrivee);
-					maResa.setDateDepart(dateDepart);
+					maResa.setNuits(nombreDeNuits);
+					maResa.setTypeSejour(typeSejour);
 					
 					
 					
-					// Ajout du ticket à la liste des tickets déjà entrés
+					
+					
+					// Ajout de la réservation à la liste
 					try {
 						gestionReservation.getInstance().ajouterReservation(maResa); // Fonction SINGLETON -initialiser 1 seule fois
 					}
@@ -109,10 +113,28 @@ public class RecupDonnes extends HttpServlet {
 					
 					if(enregistrementOk)
 					{
+						ConnexionBase monConnect = new ConnexionBase();
+						try {
+							monConnect.connexion();
+						} catch (Exception e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						try {
+							monConnect.sauvegarderReservation(nom, prenom,dateArrivee,region,typeSejour,telephone,mail,nombrePersonnes,nombreDeNuits);
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						// L'ajout de la réservation s'est bien passée => Affichage de la page de récapitulation
 						request.setAttribute("reservation", maResa);
-						getServletContext().getRequestDispatcher("/confirmResa.jsp").forward(request, response);
+						//getServletContext().getRequestDispatcher("/confirmResa.jsp").forward(request, response);
+						request.setAttribute("reservation", gestionReservation.getInstance().getList());
+						getServletContext().getRequestDispatcher("/listeReservation.jsp").forward(request, response);
+						
+						
 					}	
+					
 				}
 	}
 

@@ -1,8 +1,12 @@
 package co.simplon.maisonHote;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+
+
+import java.util.List;
+
+
+
 
 import co.simplon.maisonHote.Reservation;
 import co.simplon.maisonHote.gestionReservation;
@@ -10,7 +14,7 @@ import co.simplon.maisonHote.gestionReservation;
 public class gestionReservation {
 	
 	private final static gestionReservation INSTANCE = new gestionReservation(); // SINGLETON
-	private final Map<String, Reservation> listeReservations = new HashMap<String, Reservation>();
+	private final List<Reservation> listeResa = new ArrayList<>();
 	
 	private gestionReservation(){  // Constructeur en Private car SINGLETON
 	}
@@ -19,16 +23,16 @@ public class gestionReservation {
 		return INSTANCE;
 	}
 	
-	public Map<String, Reservation> getReservation(){
-		return listeReservations;
-	}
+	
 	
 	public void ajouterReservation(Reservation reservation) throws Exception{
-		if(listeReservations.containsKey(reservation.getNumeroResa()))
-			throw new Exception("Cette réservation a déjà été enregistrée !");
 		
-		reservation.setDateEnregistrement(new Date());
-		listeReservations.put(reservation.getNumeroResa(), reservation);
+		
+		listeResa.add(reservation);
+	}
+
+	public List<Reservation> getList() {
+		return listeResa;
 	}
 
 }

@@ -1,15 +1,13 @@
 package co.simplon.maisonHote;
 
-import java.util.Date;
+
 
 public class Reservation {
 	
 	private String numeroResa;
 	private String nom;
 	private String prenom;
-	private Date dateEnregistrement;
 	private String dateArrivee;
-	private String dateDepart;
 	private Boolean parking;
 	private Boolean fumeur;
 	private Boolean animal;
@@ -18,13 +16,16 @@ public class Reservation {
 	private String typeSejour;
 	private String telephone;
 	private String mail;
+	private int nuitee;
+	
 	
 	public int calculTarifSejour() {
+		
+		int nombreDeNuits=this.getNuits();
 		int result;
 		int animal = 0;
 		int parking = 0;
 		int personnes = this.getNombrePersonnes();
-		int nombresDeNuits = 5; // A calculer en fonction des dates
 		int tarifNuitPersonnes = 150;
 		
 		if(this.getAnimal()) {
@@ -34,7 +35,7 @@ public class Reservation {
 			parking=50;
 		}
 		
-		result = nombresDeNuits*((personnes*tarifNuitPersonnes) + animal + parking);
+		result = nombreDeNuits*((personnes*tarifNuitPersonnes) + animal + parking);
 		
 		return result;
 	}
@@ -127,13 +128,9 @@ public class Reservation {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	public Date getDateEnregistrement() {
-		return dateEnregistrement;
-	}
-	public void setDateEnregistrement(Date dateEnregistrement) {
-		this.dateEnregistrement = dateEnregistrement;
-	}
+	
 	public String getNumeroResa() {
+		numeroResa=this.getNom()+this.getPrenom()+this.getDateArrivee();
 		return numeroResa;
 	}
 	public void setNumeroResa(String numeroResa) {
@@ -151,11 +148,14 @@ public class Reservation {
 	public void setDateArrivee(String dateArrivee) {
 		this.dateArrivee = dateArrivee;
 	}
-	public String getDateDepart() {
-		return dateDepart;
+	
+
+	public int getNuits() {
+		return nuitee;
 	}
-	public void setDateDepart(String dateDepart) {
-		this.dateDepart = dateDepart;
+
+	public void setNuits(int nuitee) {
+		this.nuitee = nuitee;
 	}
 	
 	

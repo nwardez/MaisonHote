@@ -3,29 +3,36 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="co.simplon.maisonHote.Reservation"%>
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Liste des réservations</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="main.css">
+<title>Liste des rÃ©servations</title>
 </head>
 <body>
-<h1>Liste des réservationse</h1>
-		<p>Liste des réservations en cours</p>
+<h1>Liste des rÃ©servations en cours</h1>
 			
 		<table border=1 class="ticketTable">
 		<tr>
+			<th>Reference de rÃ©servation</th>
 			<th>Nom</th>
 			<th>Prenom</th>
-			<th>Numero de réservationt</th>
-			<th>Date de l'enregistrement</th>
-			<th>Date d'arrivée</th>
-			<th>Date de départ</th>
+			<th>Date d'arrivÃ©e</th>
+			<th>Nombres de nuits</th>
 			<th>Nombre de personnes</th>
-			<th>Téléphone</th>
+			<th>Fumeur</th>
+			<th>Animal</th>
+			<th>Parking</th>
+			<th>Type de sÃ©jour</th>
+			<th>TÃ©lÃ©phone</th>
 			<th>Adresse mail</th>
+			<th>Prix total</th>
+			<th>Consulter</th>
+			
+			
 			
 		</tr>
 		<%
@@ -37,15 +44,20 @@
 			    	Reservation serveur=(Reservation) it.next() ;
 		%>
 					<tr>
+						<td><%=serveur.getNumeroResa()%></td>
 						<td><%=serveur.getNom()%></td>
 						<td><%=serveur.getPrenom()%></td>
-						<td><%=serveur.getNumeroResa()%></td>
-						<td><%=dateFormater.format(serveur.getDateEnregistrement())%></td>
-						<td><%=dateFormater.format(serveur.getDateArrivee())%></td>
-						<td><%=dateFormater.format(serveur.getDateDepart())%></td>
+						<td><%=serveur.getDateArrivee()%></td>
+						<td><%=serveur.getNuits()%></td>
 						<td><%=serveur.getNombrePersonnes()%></td>
+						<td><%=serveur.fumeur()%></td>
+						<td><%=serveur.animal()%></td>
+						<td><%=serveur.parking()%></td>
+						<td><%=serveur.getTypeSejour()%></td>
 						<td><%=serveur.getTelephone()%></td>
 						<td><%=serveur.getMail()%></td>
+						<td><%=serveur.calculTarifSejour()%></td>
+						<td><a href="http://ton lien"><img src="oeil.png" alt="Voir le dÃ©tail de la rÃ©servation"></a></td>
 					</tr>
 		<%      }
 			}
