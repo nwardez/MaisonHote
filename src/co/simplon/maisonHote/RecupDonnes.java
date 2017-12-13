@@ -113,14 +113,17 @@ public class RecupDonnes extends HttpServlet {
 					
 					if(enregistrementOk)
 					{
+						// Si ok, création d'une instance de ConnexionBase
 						ConnexionBase monConnect = new ConnexionBase();
 						try {
+							// Appel de la méthode connexion
 							monConnect.connexion();
 						} catch (Exception e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 						try {
+							// Appel de la méthode d'inscrption dans la base SQL
 							monConnect.sauvegarderReservation(nom, prenom,dateArrivee,region,typeSejour,telephone,mail,nombrePersonnes,nombreDeNuits,fumeur,animal,parking);
 						} catch (SQLException e) {
 							// TODO Auto-generated catch block
